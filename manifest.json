@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Catify",
+  "version": "1.0.0",
+  "description": "Instantly replace every image on a webpage with adorable cats.",
+"permissions": [
+  "storage",
+  "tabs",
+  "scripting"
+],
+  "host_permissions": [
+    "<all_urls>",
+    "https://cataas.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+  {
+    "resources": [
+      "cats/*"
+    ],
+    "matches": [
+      "<all_urls>"
+    ]
+  }
+],
+"background": {
+  "service_worker": "background.js"
+},
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Catify"
+  }
+}
